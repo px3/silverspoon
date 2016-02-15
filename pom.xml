@@ -88,6 +88,7 @@
     <module>silverspoon-archetypes</module>
     <module>camel-temperature</module>
     <module>camel-bulldog</module>
+    <module>camel-temperature-spi</module>
   </modules>
 
   <build>
