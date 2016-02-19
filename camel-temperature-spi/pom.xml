@@ -43,7 +43,6 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<scope>test</scope>
 		</dependency>
 
 		<!-- for testing -->
@@ -56,25 +55,21 @@
 		<dependency>
 			<groupId>io.silverspoon</groupId>
 			<artifactId>bulldog-board-raspberrypi</artifactId>
-			<version>0.2.1</version>
 		</dependency>
 
 		<dependency>
 			<groupId>io.silverspoon</groupId>
 			<artifactId>bulldog-devices</artifactId>
-			<version>0.2.1</version>
-		</dependency>
+			</dependency>
 
 		<dependency>
 			<groupId>io.silverspoon</groupId>
 			<artifactId>bulldog-core</artifactId>
-			<version>0.2.1</version>
 		</dependency>
 
 		<dependency>
 			<groupId>io.silverspoon</groupId>
 			<artifactId>bulldog-linux</artifactId>
-			<version>0.2.1</version>
 		</dependency>
 
 	</dependencies>

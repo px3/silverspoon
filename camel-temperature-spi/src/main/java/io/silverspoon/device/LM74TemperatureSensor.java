@@ -112,6 +112,7 @@ public class LM74TemperatureSensor extends SpiDevice implements TemperatureSenso
          this.transfer(buffer);
 
          return temperature;
+         // return (float) Math.round(temperature); // pridane kvoli testovaniu a overeniu
       } catch (IOException e) {
          throw new IOException("Something went wrong! SpiMessage was not transfered.");
       } finally {
