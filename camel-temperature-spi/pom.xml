@@ -14,7 +14,7 @@
 	<packaging>bundle</packaging>
 
 	<name>${project.groupId}:${project.artifactId}</name>
-	<description>Camel Temperature Component for LM74 temp sensor</description>
+	<description>Camel Temperature Component for LM74 sensor</description>
 
 	<properties>
 		<!--Version of camel-temperature is aligned with Silverspoon -->
@@ -60,7 +60,7 @@
 		<dependency>
 			<groupId>io.silverspoon</groupId>
 			<artifactId>bulldog-devices</artifactId>
-			</dependency>
+		</dependency>
 
 		<dependency>
 			<groupId>io.silverspoon</groupId>
@@ -94,12 +94,12 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
+					<!--<skipTests>true</skipTests> -->
 					<systemProperties>
-						<w1.devices>${basedir}/src/test/resources</w1.devices>
+						<!-- <spi.devices>${basedir}/src/test/resources</spi.devices> -->
 					</systemProperties>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
 </project>

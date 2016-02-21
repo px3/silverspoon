@@ -19,7 +19,7 @@ public class TemperatureComponentTest extends CamelTestSupport {
    @Test
    public void testTemperature() throws Exception {
       resultEndpoint.expectedMinimumMessageCount(1);
-      resultEndpoint.expectedBodiesReceived("26.0");
+      resultEndpoint.expectedBodiesReceived("25.0");
 
       template.sendBody("");
 

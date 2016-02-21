@@ -9,7 +9,6 @@ import io.silverspoon.bulldog.raspberrypi.RaspiNames;
 import io.silverspoon.device.LM74TemperatureSensor;
 import io.silverspoon.device.TemperatureSensor;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,16 +29,10 @@ public class TemperatureEndpoint extends DefaultEndpoint {
 
    private String type = null;
 
-   // SPI privates
-   private static List<SpiBus> spiBuses;
-   private static SpiBus spiBus = null;
-   private static SpiConnection connection = null;
-   private static DigitalOutput output = null;
-
-   private final String SPI_DIR = System.getProperty("spi.devices", "/sys/bus/spi/devices");
    private final Board board;
 
    private List<TemperatureSensor> sensors = new ArrayList<TemperatureSensor>();
+   private List<SpiBus> spiBuses;
 
    private static final Logger LOG = Logger.getLogger(TemperatureEndpoint.class);
 
@@ -51,9 +44,6 @@ public class TemperatureEndpoint extends DefaultEndpoint {
       // init board
       board = Platform.createBoard();
       LOG.info("Board: " + board);
-
-      // init SPI bus
-      initSpi();
 
       // init sensors
       loadSensors();
@@ -96,24 +86,17 @@ public class TemperatureEndpoint extends DefaultEndpoint {
    }
 
    private void loadSPISensors() {
-      File sensorDir = new File(SPI_DIR);
-
-      for (File sensorFile : sensorDir.listFiles()) {
-         if (sensorFile.getName().startsWith("spi")) {
-            LOG.info("Adding sensor file: " + sensorFile);
-            sensors.add(new LM74TemperatureSensor(connection, output));
-         }
-      }
-   }
-
-   private void initSpi() {
       spiBuses = board.getSpiBuses();
 
-      spiBus = spiBuses.get(0);
+      SpiBus spiBus = spiBuses.get(0);
 
-      output = board.getPin(RaspiNames.P1_19).as(DigitalOutput.class);
+      DigitalOutput output = board.getPin(RaspiNames.P1_19).as(DigitalOutput.class);
+      LOG.info("Created DigitalOutput: " + output.getName());
 
-      connection = spiBus.createSpiConnection(output);
+      SpiConnection connection = spiBus.createSpiConnection(output);
+      LOG.info("Created connection: " + connection.getAddress() + ", " + connection.getBus());
+
+      sensors.add(new LM74TemperatureSensor(connection, output));
    }
 
    public float getTemperature() {
@@ -125,6 +108,7 @@ public class TemperatureEndpoint extends DefaultEndpoint {
             tmpRes += sensor.readTemperature();
          }
          res = tmpRes / sensors.size();
+         LOG.info("res: " + res);
       } catch (IOException e) {
          LOG.error("Failed to count the temperature.", e);
       }
