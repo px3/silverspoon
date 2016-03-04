@@ -1,6 +1,7 @@
 package io.silverspoon;
 
 import io.silverspoon.device.OneWireTemperatureSensor;
+import io.silverspoon.device.SPITemperatureSensor;
 import io.silverspoon.device.TemperatureSensor;
 
 import org.apache.camel.Consumer;
@@ -24,6 +25,7 @@ public class TemperatureEndpoint extends DefaultEndpoint {
    private String type = null;
 
    private final String W1_DIR = System.getProperty("w1.devices", "/sys/bus/w1/devices/");
+   private final String SPI_MOSI_PIN = System.getProperty("SPI_MOSI");
 
    private List<TemperatureSensor> sensors = new ArrayList<TemperatureSensor>();
    private static final Logger LOG = Logger.getLogger(TemperatureEndpoint.class);
@@ -57,7 +59,6 @@ public class TemperatureEndpoint extends DefaultEndpoint {
    }
 
    private void loadSensors() {
-      // Load sensors (currently only w1 is supported)
       switch (type) {
          case "w1":
             loadW1Sensors();
@@ -73,14 +74,13 @@ public class TemperatureEndpoint extends DefaultEndpoint {
       }
    }
 
-   private void loadSPISensors() {
+   private void loadI2cSensors() {
       // TODO:
       throw new UnsupportedOperationException("Not implemented, yet.");
    }
 
-   private void loadI2cSensors() {
-      // TODO:
-      throw new UnsupportedOperationException("Not implemented, yet.");
+   private void loadSPISensors() {
+      sensors.add(new SPITemperatureSensor(SPI_MOSI_PIN));
    }
 
    private void loadW1Sensors() {

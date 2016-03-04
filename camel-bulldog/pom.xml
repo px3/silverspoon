@@ -1,107 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <artifactId>silverspoon-parent</artifactId>
-    <groupId>io.silverspoon</groupId>
-    <version>0.2.1-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
+	<parent>
+		<artifactId>silverspoon-parent</artifactId>
+		<groupId>io.silverspoon</groupId>
+		<version>0.2.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
 
-  <artifactId>camel-bulldog</artifactId>
-  <packaging>bundle</packaging>
+	<artifactId>camel-bulldog</artifactId>
+	<packaging>bundle</packaging>
 
-  <name>${project.groupId}:${project.artifactId}</name>
-  <description>Camel Bulldog Component</description>
+	<name>${project.groupId}:${project.artifactId}</name>
+	<description>Camel Bulldog Component</description>
 
-  <properties>
-    <!--Version of camel-temperature is aligned with Silverspoon -->
-    <version.silverspoon>${project.version}</version.silverspoon>
-    <maven.test.skip>true</maven.test.skip>
-  </properties>
+	<properties>
+		<!--Version of camel-temperature is aligned with Silverspoon -->
+		<version.silverspoon>${project.version}</version.silverspoon>
+		<maven.test.skip>true</maven.test.skip>
+	</properties>
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>io.silverspoon</groupId>
-        <artifactId>silverspoon-bom</artifactId>
-        <version>${version.silverspoon}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>io.silverspoon</groupId>
+				<artifactId>silverspoon-bom</artifactId>
+				<version>${version.silverspoon}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-core</artifactId>
-    </dependency>
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-core</artifactId>
+		</dependency>
 
-    <!-- bulldog -->
-    <dependency>
-      <groupId>io.silverspoon</groupId>
-      <artifactId>bulldog-board-raspberrypi</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.silverspoon</groupId>
-      <artifactId>bulldog-board-cubieboard</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.silverspoon</groupId>
-      <artifactId>bulldog-board-beagleboneblack</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.silverspoon</groupId>
-      <artifactId>bulldog-devices</artifactId>
-    </dependency>
+		<!-- bulldog -->
+		<dependency>
+			<groupId>io.silverspoon</groupId>
+			<artifactId>bulldog-board-raspberrypi</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.silverspoon</groupId>
+			<artifactId>bulldog-board-cubieboard</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.silverspoon</groupId>
+			<artifactId>bulldog-board-beagleboneblack</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.silverspoon</groupId>
+			<artifactId>bulldog-devices</artifactId>
+		</dependency>
 
-    <!-- logging -->
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-    </dependency>
+		<!-- logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+		</dependency>
 
-    <!-- testing -->
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-test</artifactId>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+		<!-- testing -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
-  <build>
-    <defaultGoal>install</defaultGoal>
-    <plugins>
-      <!-- to generate the MANIFEST-FILE of the bundle -->
-      <plugin>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>maven-bundle-plugin</artifactId>
-        <version>2.3.7</version>
-        <extensions>true</extensions>
-        <configuration>
-          <instructions>
-            <Bundle-SymbolicName>io.silverspoon.camel-bulldog</Bundle-SymbolicName>
-            <Export-Service>org.apache.camel.spi.ComponentResolver;component=bulldog</Export-Service>
-          </instructions>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<plugins>
+			<!-- to generate the MANIFEST-FILE of the bundle -->
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>2.3.7</version>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>io.silverspoon.camel-bulldog</Bundle-SymbolicName>
+						<Export-Service>org.apache.camel.spi.ComponentResolver;component=bulldog</Export-Service>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
-  <!-- Profile to explicitly enable tests (designed for ARM boards only) -->
-  <profiles>
-    <profile>
-      <id>test</id>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-      </activation>
-      <properties>
-        <maven.test.skip>false</maven.test.skip>
-      </properties>
-    </profile>
-  </profiles>
+	<!-- Profile to explicitly enable tests (designed for ARM boards only) -->
+	<profiles>
+		<profile>
+			<id>test</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<maven.test.skip>false</maven.test.skip>
+			</properties>
+		</profile>
+	</profiles>
 </project>
