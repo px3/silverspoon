@@ -25,7 +25,7 @@ public class SPITemperatureSensor implements TemperatureSensor {
     * Constructor
     * 
     * @param pin sets SPI MOSI pin defined by environment variable named "SPI_MOSI".
-    *        e.g.: export SPI_MOSI="P1_19"
+    *        Default pin: "P1_19"
     */
    public SPITemperatureSensor(String pin) {
       this.SPI_MOSI = pin;

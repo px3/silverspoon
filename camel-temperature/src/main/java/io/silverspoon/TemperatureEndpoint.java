@@ -25,7 +25,7 @@ public class TemperatureEndpoint extends DefaultEndpoint {
    private String type = null;
 
    private final String W1_DIR = System.getProperty("w1.devices", "/sys/bus/w1/devices/");
-   private final String SPI_MOSI_PIN = System.getProperty("SPI_MOSI");
+   private final String SPI_MOSI_PIN = System.getProperty("SPI_MOSI", "P1_19");
 
    private List<TemperatureSensor> sensors = new ArrayList<TemperatureSensor>();
    private static final Logger LOG = Logger.getLogger(TemperatureEndpoint.class);
