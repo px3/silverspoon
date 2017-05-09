@@ -1,10 +1,5 @@
 package io.silverspoon;
 
-import io.silverspoon.bulldog.core.Signal;
-import io.silverspoon.bulldog.core.gpio.DigitalOutput;
-import io.silverspoon.bulldog.core.platform.Board;
-import io.silverspoon.bulldog.core.platform.Platform;
-
 import org.apache.camel.EndpointInject;
 import org.apache.camel.Produce;
 import org.apache.camel.ProducerTemplate;
