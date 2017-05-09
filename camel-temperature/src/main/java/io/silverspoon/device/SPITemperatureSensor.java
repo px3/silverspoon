@@ -10,6 +10,11 @@ import io.silverspoon.bulldog.core.platform.Board;
 import io.silverspoon.bulldog.core.platform.Platform;
 import io.silverspoon.bulldog.devices.sensors.*;
 
+/**
+ * Represents SPI Temperature Sensor and reads its values.
+ *
+ * @author <a href="mailto:mat.per.vt@gmail.com">Matej Perejda</a>
+ */
 public class SPITemperatureSensor implements TemperatureSensor {
 
    private final Board board;
@@ -23,9 +28,10 @@ public class SPITemperatureSensor implements TemperatureSensor {
 
    /**
     * Constructor
-    * 
-    * @param pin sets SPI MOSI pin defined by environment variable named "SPI_MOSI".
-    *        Default pin: "P1_19"
+    *
+    * @param pin
+    *       sets SPI MOSI pin defined by environment variable named "SPI_MOSI".
+    *       Default pin: "P1_19"
     */
    public SPITemperatureSensor(String pin) {
       this.SPI_MOSI = pin;

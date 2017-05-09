@@ -13,14 +13,8 @@ public class TemperatureComponentTest extends CamelTestSupport {
    @EndpointInject(uri = "mock:result")
    protected MockEndpoint resultEndpoint;
 
-   @EndpointInject(uri = "mock:resultSPI")
-   protected MockEndpoint resultEndpointSPI;
-
    @Produce(uri = "direct:start")
    protected ProducerTemplate template;
-
-   @Produce(uri = "direct:startSPI")
-   protected ProducerTemplate templateSPI;
 
    @Test
    public void testW1Temperature() throws Exception {
@@ -32,17 +26,7 @@ public class TemperatureComponentTest extends CamelTestSupport {
       assertMockEndpointsSatisfied();
    }
 
-   @Test
-   public void testSPITemperature() throws Exception {
-      // TODO: SPIBus mocking is necessary.
-
-      resultEndpointSPI.expectedMinimumMessageCount(1);
-      resultEndpointSPI.expectedBodiesReceived("25.0");
-
-      templateSPI.sendBody(resultEndpointSPI, "25.0");
-
-      assertMockEndpointsSatisfied();
-   }
+   // TODO: create SPI test
 
    @Override
    protected RouteBuilder createRouteBuilder() throws Exception {
