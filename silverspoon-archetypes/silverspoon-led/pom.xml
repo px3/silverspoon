@@ -4,7 +4,7 @@
   <parent>
     <groupId>io.silverspoon</groupId>
     <artifactId>silverspoon-archetypes</artifactId>
-    <version>0.2.1-SNAPSHOT</version>
+    <version>0.3.0-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
   <artifactId>silverspoon-archetype-led</artifactId>

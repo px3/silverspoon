@@ -1,6 +1,4 @@
-# Silverspoon
-
-Portable IoT Platform
+![Silverspoon](https://raw.githubusercontent.com/px3/px3.github.io/master/img/silverspoon-logo.png)
 
 Project currently consists of the following:
 * [Bulldog GPIO Library Camel Component](https://github.com/px3/silverspoon/tree/devel/camel-bulldog)

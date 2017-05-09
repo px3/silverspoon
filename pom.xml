@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.silverspoon</groupId>
   <artifactId>silverspoon-parent</artifactId>
-  <version>0.2.1-SNAPSHOT</version>
+  <version>0.3.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>${project.groupId}:${project.artifactId}</name>
   <description>Portable IoT Platform.</description>
@@ -64,7 +64,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <!--version.bulldog>${project.version}</version.bulldog-->
-    <version.bulldog>0.2.1</version.bulldog>
+    <version.bulldog>0.3.0-SNAPSHOT</version.bulldog>
     <version.camel>2.16.1</version.camel>
     <version.amq>5.9.0</version.amq>
     <version.slf4j>1.7.5</version.slf4j>
@@ -154,6 +154,17 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
           <version>${version.javadoc.plugin}</version>
+          <executions>
+            <execution>
+              <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+                <configuration>
+                  <additionalparam>-Xdoclint:none</additionalparam>
+                </configuration>
+            </execution>
+          </executions>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>

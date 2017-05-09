@@ -21,10 +21,10 @@ import io.silverspoon.bulldog.core.platform.Platform;
  * @author <a href="mailto:pavel.macik@gmail.com">Pavel Macík</a>
  * @author <a href="mailto:pipistik.bunciak@gmail.com">Štefan Bunčiak</a>
  */
-@UriEndpoint(scheme = "bulldog", title = "Bulldog", syntax = "bulldog://(gpio|spi|i2c|pwm)(\\?[\\w=&%_]+)", consumerClass = BulldogConsumer.class)
+@UriEndpoint(scheme = "bulldog", title = "Bulldog", syntax = "bulldog://(gpio|spi|i2c|pwm)(\\?[\\w=&%_]+)?", consumerClass = BulldogConsumer.class)
 public class BulldogEndpoint extends DefaultEndpoint {
 
-   public static final String URI_PATTERN_STRING = "bulldog://(gpio|spi|i2c|pwm)(\\?[\\w=&%_]+)";
+   public static final String URI_PATTERN_STRING = "bulldog://(gpio|spi|i2c|pwm)(\\?[\\w=&%_]+)?";
    public static final Pattern URI_PATTERN = Pattern.compile(URI_PATTERN_STRING);
 
    private static final Logger LOG = LoggerFactory.getLogger(BulldogEndpoint.class);
@@ -41,10 +41,10 @@ public class BulldogEndpoint extends DefaultEndpoint {
    private long pulseInMicroseconds = 0L; // valid for gpio
 
    @UriPath
-   private String address = null; // valid for i2c
+   private int readLength = 0; // valid for i2c (number of bytes to read from I2C bus)
 
    @UriPath
-   private int readLength = 0; // valid for i2c (number of bytes to read from I2C bus)
+   private boolean batch = false; // valid i2c (wheather the message is a single I2C message or a batch of messages
 
    private String bus = null;
 
@@ -113,14 +113,6 @@ public class BulldogEndpoint extends DefaultEndpoint {
       this.value = value;
    }
 
-   public String getAddress() {
-      return this.address;
-   }
-
-   public void setAddress(String address) {
-      this.address = address;
-   }
-
    public int getReadLength() {
       return this.readLength;
    }
@@ -143,5 +135,13 @@ public class BulldogEndpoint extends DefaultEndpoint {
 
    public void setBus(String bus) {
       this.bus = bus;
+   }
+
+   public boolean isBatch() {
+      return batch;
+   }
+
+   public void setBatch(final boolean batch) {
+      this.batch = batch;
    }
 }

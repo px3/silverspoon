@@ -4,11 +4,11 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<artifactId>silverspoon-parent</artifactId>
-		<groupId>io.silverspoon</groupId>
-		<version>0.2.1-SNAPSHOT</version>
-	</parent>
+  <parent>
+    <artifactId>silverspoon-parent</artifactId>
+    <groupId>io.silverspoon</groupId>
+    <version>0.3.0-SNAPSHOT</version>
+  </parent>
 
 	<artifactId>camel-temperature</artifactId>
 	<packaging>bundle</packaging>
