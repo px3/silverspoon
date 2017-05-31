@@ -15,7 +15,9 @@ public class TemperatureComponentTest extends CamelTestSupport {
    
    @Produce(uri = "direct:start")
    protected ProducerTemplate template;
-   
+
+   // TODO: create test for SPI
+
    @Test
    public void testTemperature() throws Exception {
       resultEndpoint.expectedMinimumMessageCount(1);
